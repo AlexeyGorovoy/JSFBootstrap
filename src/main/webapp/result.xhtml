@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/WEB-INF/templates/default.xhtml">
+    <ui:define name="content">
+
+        <div class="well">
+            <h:form id="reg" styleClass="form-horizontal">
+                <fieldset>
+                    <h2><h:outputText value="Result of adding #{calculatorBean.x} and #{calculatorBean.y} is #{calculatorBean.result }"/></h2>
+                    <br />
+
+                    <div class="form-actions">
+                        <h:panelGrid columns="3" cellpadding="15">
+                            <h:commandButton action="#{historianBean.addEntry(calculatorBean.expression)}"
+                                    value="Save in public!" styleClass="btn btn-success"/>
+                            <h:commandButton action="back" value="Home" styleClass="btn btn-primary"/>
+                            <h:commandButton action="history" value="View history" styleClass="btn btn-info" />
+                        </h:panelGrid>
+                    </div>
+                </fieldset>
+            </h:form>
+        </div>
+
+    </ui:define>
+</ui:composition>

@@ -5,7 +5,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	template="/WEB-INF/templates/default.xhtml">
 	<ui:define name="content">
-		<div class="hero-unit">
+		<!-- <div class="hero-unit">
 			<h2>JSF2 + Twitter Bootstrap demo</h2>
 			<p>This is a template for a simple marketing or informational
 				website. It includes a large callout called the hero unit and three
@@ -20,12 +20,12 @@
 			<h3>Your application can run on:</h3>
 			<img src="resources/gfx/dualbrand_as7eap.png" />
 
-		</div>
+		</div> !-->
 
 		<div class="well">
 			<h:form id="reg" styleClass="form-horizontal">
 				<fieldset>
-					<h2>Member Registration</h2>
+					<h2>Calculator</h2>
 					<br />
 
 					<h:panelGroup
@@ -37,15 +37,24 @@
 						</div>
 					</h:panelGroup>
 
-					<div class="control-group #{!name.valid ? 'error' : ''}">
-						<h:outputLabel for="name" value="Name:" styleClass="control-label" />
-						<div class="controls">
-							<h:inputText id="name" value="#{newMember.name}"
-								binding="#{name}" />
-							<h:message for="name" errorClass="help-inline" />
-						</div>
-					</div>
+                    <div class="control-group #{!val1.valid ? 'error' : ''}">
+                        <h:outputLabel for="val1" value="Value1:" styleClass="control-label" />
+                        <div class="controls">
+                            <h:inputText id="val1" value="#{calculatorBean.x}"
+                                         binding="#{val1}" />
+                            <h:message for="val1" errorClass="help-inline" />
+                        </div>
+                    </div>
 
+                    <div class="control-group #{!val2.valid ? 'error' : ''}">
+                        <h:outputLabel for="val2" value="Value2:" styleClass="control-label" />
+                        <div class="controls">
+                            <h:inputText id="val2" value="#{calculatorBean.y}"
+                                         binding="#{val2}" />
+                            <h:message for="val2" errorClass="help-inline" />
+                        </div>
+                    </div>
+                     <!--
 					<div class="control-group #{!email.valid ? 'error' : ''}">
 						<h:outputLabel for="email" value="Email:"
 							styleClass="control-label" />
@@ -65,16 +74,19 @@
 							<h:message for="phoneNumber" errorClass="help-inline" />
 						</div>
 					</div>
-
+                     !-->
 					<div class="form-actions">
-						<h:commandButton id="register"
-							action="#{memberController.register}" value="Register"
-							styleClass="btn btn-primary" />
-					</div>
+                        <h:panelGrid columns="2" cellpadding="2">
+						    <h:commandButton id="register"
+							    action="#{calculatorBean.add}" value="Add"
+							    styleClass="btn btn-primary" />
+                            <h:commandButton action="history" value="View history" styleClass="btn btn-info" />
+                        </h:panelGrid>
+                    </div>
 				</fieldset>
 			</h:form>
 		</div>
-
+        <!--
 		<div class="well">
 			<h2>Members</h2>
 			<br />
@@ -109,6 +121,6 @@
 						href="#{request.contextPath}/rest/members">/rest/members</a>
 				</f:facet>
 			</h:dataTable>
-		</div>
+		</div>     !-->
 	</ui:define>
 </ui:composition>

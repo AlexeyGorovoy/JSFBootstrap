@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/WEB-INF/templates/default.xhtml">
+    <ui:define name="content">
+
+        <div class="well">
+            <h:form id="reg" styleClass="form-horizontal">
+                <fieldset>
+
+                    <div class="well">
+                        <h2>History</h2>
+                        <br/>
+
+                        <ui:repeat var="entry" value="#{historianBean.historyStrings}">
+                            <h:outputText value="#{entry}"/> <br/>
+                        </ui:repeat>
+
+                    </div>
+
+                    <div class="form-actions">
+                        <h:panelGrid columns="3" cellpadding="15">
+                            <h:commandButton action="back" value="Home" styleClass="btn btn-primary"/>
+                        </h:panelGrid>
+                    </div>
+                </fieldset>
+            </h:form>
+        </div>
+
+    </ui:define>
+</ui:composition>

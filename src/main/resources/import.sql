@@ -1,2 +1,10 @@
--- You can use this file to load seed data into the database using SQL statements
-insert into Member (id, name, email, phone_number) values (0, 'John Smith', 'john.smith@mailinator.com', '2125551212') 
+﻿insert into addition (x, y) values (15.29, 18.36);
+insert into addition (x, y) values (34.23, 18.54);
+insert into addition (x, y) values (62.24, 12.65);
+insert into addition (x, y) values (13.75, 18.64);
+insert into addition (x, y) values (11.29, 34.36);
+insert into addition (x, y) values (3.25, 56.30);
+insert into addition (x, y) values (52.67, 26.25);
+insert into addition (x, y) values (14.23, 64.36);
+insert into addition (x, y) values (12.76, 23.36);
+insert into addition (x, y) values (54.34, 31.36);

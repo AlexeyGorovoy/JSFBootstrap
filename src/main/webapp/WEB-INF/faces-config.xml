@@ -11,4 +11,37 @@
    <!-- Write your navigation rules here. You are encouraged to use CDI for 
       creating @Named managed beans. -->
 
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/result.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+
+    <navigation-rule>
+        <from-view-id>/history.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>back</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/result.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>back</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>history</from-outcome>
+            <to-view-id>/history.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
 </faces-config>
