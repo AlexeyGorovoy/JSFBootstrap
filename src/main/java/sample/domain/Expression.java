@@ -1,6 +1,6 @@
 package sample.domain;
 
-import javax.persistence.*;
+
 import java.io.Serializable;
 
 /**
@@ -10,9 +10,6 @@ import java.io.Serializable;
  * Email:   alexey.gorovoy.work@gmail.com
  */
 
-@Entity
-@Table(name = "addition")
-@NamedQuery(name = "getAll", query = "select a from addition a")
 public class Expression implements Serializable {
 
     public Expression() {
@@ -23,15 +20,10 @@ public class Expression implements Serializable {
         this.y = y;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "add_seq_gen")
-    @SequenceGenerator(name = "add_seq_gen", sequenceName = "add_seq")
     private Integer id;
 
-    @Column
     private Double x;
 
-    @Column
     private Double y;
 
     public Double getX() {
