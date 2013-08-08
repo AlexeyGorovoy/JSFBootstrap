@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                template="/WEB-INF/templates/default.xhtml">
+    <ui:define name="content">
+
+        <div class="well">
+            <h:form id="reg" styleClass="form-horizontal">
+                <fieldset>
+
+                    <div class="well">
+                        <h2>Timer</h2>
+                        <br/>
+
+                    </div>
+
+                    <div class="control-group #{!interval.valid ? 'error' : ''}">
+                        <h:outputLabel for="interval" value="Timer interval:" styleClass="control-label" />
+                        <div class="controls">
+                            <h:inputText id="interval" value="#{periodicTimerBean.interval}"
+                                         binding="#{interval}" disabled="#{periodicTimerBean.timerStarted}" />
+                            <h:message for="interval" errorClass="help-inline" />
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <h:panelGrid columns="3" cellpadding="15">
+                            <h:commandButton action="back" value="Home" styleClass="btn btn-primary"/>
+                            <c:if test="${periodicTimerBean.timerStarted}">
+                                <h:commandButton action="#{periodicTimerBean.stopTimer()}" value="Stop timer!" styleClass="btn btn-danger"/>
+                            </c:if>
+                            <c:if test="${!periodicTimerBean.timerStarted}">
+                                <h:commandButton action="#{periodicTimerBean.startTimer()}" value="Start timer!" styleClass="btn btn-info"/>
+                            </c:if>
+                        </h:panelGrid>
+                    </div>
+                </fieldset>
+            </h:form>
+        </div>
+
+    </ui:define>
+</ui:composition>

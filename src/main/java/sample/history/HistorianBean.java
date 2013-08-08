@@ -1,6 +1,7 @@
 package sample.history;
 
 import sample.domain.Expression;
+import sample.timer.PeriodicTimer;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ApplicationScoped;
@@ -19,6 +20,9 @@ import java.util.List;
 public class HistorianBean {
     @EJB
     Historian historian;
+
+    public HistorianBean() {
+    }
 
     public List<Expression> getHistory(){
         return historian.getHistory();
