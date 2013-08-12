@@ -24,23 +24,23 @@ public class HistorianImpl  implements Historian{
 
     @PersistenceContext(name = "jpa_test")
     EntityManager em;
-                        /*
+
     @PostConstruct
     public void init() {
         Query q = em.createNamedQuery("getAll");
         list = (List<Expression>)q.getResultList();
     }
-                          */
+
     public void addEntry(Expression exp) {
         list.add(exp);
         em.persist(exp);
     }
-           /*
+
     @PreDestroy
     public void destroy() {
         em.close();
     }
-             */
+
     @Override
     public List<Expression> getHistory() {
         return list;

@@ -28,10 +28,10 @@ public class Expression implements Serializable {
     @SequenceGenerator(name = "add_seq_gen", sequenceName = "add_seq")
     private Integer id;
 
-    @Column
+    @Column(name = "x")
     private Double x;
 
-    @Column
+    @Column(name = "y")
     private Double y;
 
     public Double getX() {
