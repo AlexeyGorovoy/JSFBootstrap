@@ -11,8 +11,8 @@ import java.io.Serializable;
  */
 
 @Entity
-@Table(name = "addition")
-@NamedQuery(name = "getAll", query = "select a from addition a")
+@Table (name = "addition")
+@NamedQuery(name = "getAll", query = "select a from Expression a")
 public class Expression implements Serializable {
 
     public Expression() {

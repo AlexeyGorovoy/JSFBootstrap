@@ -5,10 +5,7 @@ import sample.domain.Expression;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.ejb.Stateful;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+import javax.persistence.*;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,29 +17,38 @@ import java.util.List;
  */
 @Stateful
 public class HistorianImpl  implements Historian{
-    private List<Expression> list = new LinkedList<Expression>();
+    private List list = new LinkedList<Expression>();
 
-    @PersistenceContext(name = "jpa_test")
+    @PersistenceUnit(name = "jpa_testUnit")
+    private EntityManagerFactory entityManagerFactory;
     EntityManager em;
 
     @PostConstruct
     public void init() {
+        em = entityManagerFactory.createEntityManager();
         Query q = em.createNamedQuery("getAll");
-        list = (List<Expression>)q.getResultList();
+        list = q.getResultList();
     }
 
     public void addEntry(Expression exp) {
-        list.add(exp);
         em.persist(exp);
+        list.clear();
+        init();
     }
 
     @PreDestroy
     public void destroy() {
         em.close();
+        list.clear();
     }
 
     @Override
     public List<Expression> getHistory() {
-        return list;
+        List<Expression> expressionList = new LinkedList<Expression>();
+        for (Object obj : list) {
+            if (obj instanceof Expression)
+            expressionList.add((Expression)obj);
+        }
+        return expressionList;
     }
 }
